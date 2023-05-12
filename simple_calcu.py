@@ -12,11 +12,15 @@ calcu.geometry("470x200")
 calcu.config(bg="light pink")
 
 # Display the operation buttons
-operations = ""
+operations = StringVar()
 
 operation = Label(calcu, text="Choose an \noperation to use:", font=("helvetica", 12, "bold"),
                  bg="light pink", fg="black", justify=LEFT)
 operation.grid(row=0, column=0, padx=5, pady=10)
+
+# display the input
+def op_display():
+    operation_disp.config("Operation is: " + operations.get())
 
 # create buttons for operations
 add_button = Button(calcu, text="+", font=("helvetica", 20, "bold"))
@@ -30,6 +34,10 @@ mul_button.grid(row=1, column=3, padx=5, pady=20)
 
 div_button = Button(calcu, text="/", font=("helvetica", 20, "bold"))
 div_button.grid(row=1, column=4, padx=5, pady=20)
+
+# display the input
+operation_disp = Label(calcu, textvariable=operations, fg="white", font=("helvetica", 10))
+operation_disp.grid(row=2,column=1, sticky=W)
 
 # Ask user to input two numbers
 
