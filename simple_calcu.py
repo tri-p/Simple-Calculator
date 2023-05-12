@@ -13,7 +13,7 @@ def func_op(number):
 # Create the window for choosing an operation
 calcu = Tk()
 calcu.title("Simple Calculator - 2023")
-calcu.geometry("500x600")
+calcu.geometry("500x450")
 calcu.config(bg="light pink")
 
 # Display the operation buttons
@@ -67,6 +67,25 @@ sec_num_box = Entry(calcu, textvariable=second_num, fg="black", font=("helvetica
 sec_num_box.grid(row=7, column=0, padx=5, pady=5)
 
 # Evaluate the equation
+answer = ""
+
+def calculate():
+
+    try:
+        global operation
+        equal= str(eval(first_num, operation, second_num))
+        answer_display.setvar(equal)
+        answer = ""
+
+    except:
+        answer_display.config(text="Error")
+        
+# calculate button
+calcu_button = Button(calcu, text="Calculate", fg="black", font=("helvetica", 12, "bold"), command=calculate)
+calcu_button.grid(row=8, column=0, padx=5, pady=10)
+
+answer_display = Label(calcu, textvariable=answer, fg="white", bg="light pink", font=("helvetica", 12,"bold"))
+answer_display.grid(row=9, column=0, padx=5, pady=10)
 
 # Create a popup window for another calculation
 
