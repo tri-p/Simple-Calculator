@@ -22,6 +22,15 @@ def subtraction():
         return
     output_disp.config(text=str(first_num) + " - " + str(sec_num) + " = " + str(first_num - sec_num))
 
+def multiplication():
+    try:
+        first_num = int(first_num_box.get())
+        sec_num = int(sec_num_box.get())
+    except ValueError:
+        output_disp.config(text="Error: Invalid input")
+        return
+    output_disp.config(text=str(first_num) + " * " + str(sec_num) + " = " + str(first_num * sec_num))
+
 # Create the window for choosing an operation
 calcu = Tk()
 calcu.title("Simple Calculator - 2023")
@@ -76,7 +85,7 @@ add_button.pack(side=LEFT, padx=5, pady=20, anchor='n')
 sub_button = Button(calcu, text="-", font=("helvetica", 20, "bold"), command=subtraction)
 sub_button.pack(side=LEFT, padx=5, pady=20, anchor='n')
 
-mul_button = Button(calcu, text="*", font=("helvetica", 20, "bold"))
+mul_button = Button(calcu, text="*", font=("helvetica", 20, "bold"), command=multiplication)
 mul_button.pack(side=LEFT, padx=5, pady=20, anchor='n')
 
 div_button = Button(calcu, text="/", font=("helvetica", 20, "bold"))
