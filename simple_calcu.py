@@ -66,28 +66,6 @@ first_num_box.pack(padx=5, pady=10)
 sec_num_box = Entry(calcu, textvariable=second_num, fg="black", font=("helvetica", 10, "bold"))
 sec_num_box.pack(padx=5, pady=10)
 
-# Evaluate the equation
-answer = ""
-
-def calculate():
-
-    try:
-        global operation
-        answer_display.setvar(operation)
-        equal= str(eval(first_num, operation, second_num))
-        answer_display.setvar(equal)
-        answer = ""
-
-    except:
-        answer_display.config(text="Error")
-        
-# calculate button
-calcu_button = Button(calcu, text="Calculate", fg="black", font=("helvetica", 12, "bold"), command=calculate)
-calcu_button.pack(padx=5, pady=10)
-
-answer_display = Label(calcu, textvariable=answer, fg="white", bg="light pink", font=("helvetica", 12,"bold"))
-answer_display.pack(padx=5, pady=10)
-
 # Create a popup window for another calculation
 
 # Create a popup window to exit the app
