@@ -20,9 +20,11 @@ def addition():
     except ValueError:
         output_disp.config(text="Error: Invalid input")
         disable()
+        ask()
         return
     output_disp.config(text=str(first_num) + " + " + str(sec_num) + " = " + str(first_num + sec_num))
     disable()
+    ask()
 
 def subtraction():
     try:
@@ -31,9 +33,11 @@ def subtraction():
     except ValueError:
         output_disp.config(text="Error: Invalid input")
         disable()
+        ask()
         return
     output_disp.config(text=str(first_num) + " - " + str(sec_num) + " = " + str(first_num - sec_num))
     disable()
+    ask()
 
 def multiplication():
     try:
@@ -42,9 +46,11 @@ def multiplication():
     except ValueError:
         output_disp.config(text="Error: Invalid input")
         disable()
+        ask()
         return
     output_disp.config(text=str(first_num) + " * " + str(sec_num) + " = " + str(first_num * sec_num))
     disable()
+    ask()
 
 def division():
     try:
@@ -52,16 +58,19 @@ def division():
         sec_num = int(sec_num_box.get())
         output_disp.config(text=str(first_num) + " / " + str(sec_num) + " = " + str(first_num / sec_num))
         disable()
+        ask()
         if sec_num == 0:
             raise ZeroDivisionError()
     except ZeroDivisionError:
         output_disp.config(text="Error: Division by zero")
         disable()
+        ask()
     except ValueError:
         output_disp.config(text="Error: Invalid input")
         disable()
         return
     disable()
+    ask()
 
 # Create the window for choosing an operation
 calcu = Tk()
@@ -128,6 +137,26 @@ output_disp = Label(calcu, text="", fg="white", bg="light pink", font=("helvetic
 output_disp.place(x=5, y=360)
 
 # Create a popup window for another calculation
+# function to ask if the user wants to try again
+def ask():
+    ask = Toplevel()
+    ask.title("Try Again?")
+    ask.config(bg="light pink")
+    ask.resizable(False, False)
+
+    # create a label asking if the user wants to try again
+    ask_label = Label(ask, text="Would you like to try again?", bg="light pink", font=("helvetica", 12, "bold"))
+    ask_label.pack(padx=10, pady=10)
+    
+    # create a frame to hold the buttons
+
+    # create a "Yes" button that returns True
+
+    # create a "No" button that returns False
+
+    # ===== start popup window =====
+    ask.mainloop()
+
 
 # Create a popup window to exit the app
 
