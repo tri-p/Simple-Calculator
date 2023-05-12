@@ -13,6 +13,15 @@ def addition():
         return
     output_disp.config(text=str(first_num) + " + " + str(sec_num) + " = " + str(first_num + sec_num))
 
+def subtraction():
+    try:
+        first_num = int(first_num_box.get())
+        sec_num = int(sec_num_box.get())
+    except ValueError:
+        output_disp.config(text="Error: Invalid input")
+        return
+    output_disp.config(text=str(first_num) + " - " + str(sec_num) + " = " + str(first_num - sec_num))
+
 # Create the window for choosing an operation
 calcu = Tk()
 calcu.title("Simple Calculator - 2023")
@@ -64,7 +73,7 @@ Label(calcu, text="", bg="light pink").pack(side=LEFT, padx=75)
 add_button = Button(calcu, text="+", font=("helvetica", 20, "bold"), command=addition)
 add_button.pack(side=LEFT, padx=5, pady=20, anchor='n')
 
-sub_button = Button(calcu, text="-", font=("helvetica", 20, "bold"))
+sub_button = Button(calcu, text="-", font=("helvetica", 20, "bold"), command=subtraction)
 sub_button.pack(side=LEFT, padx=5, pady=20, anchor='n')
 
 mul_button = Button(calcu, text="*", font=("helvetica", 20, "bold"))
