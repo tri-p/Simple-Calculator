@@ -172,12 +172,26 @@ def ask():
     # create a "Yes" button that returns True
     yes_button = Button(button_frame, text="Yes", font=("helvetica", 12, "bold"), 
                         command=lambda: [undisable(), clear(), ask.destroy()])
-    yes_button.pack(padx=5, pady=5)
+    yes_button.pack(side=LEFT, padx=5, pady=5)
 
     # create a "No" button that returns False
     no_button = Button(button_frame, text="No", font=("helvetica", 12, "bold"),
                        command=lambda: [messagebox.showinfo("Thank you", "Thank you!"), ask.destroy(), quit()])
-    no_button.pack(padx=5, pady=5)
+    no_button.pack(side=LEFT, padx=5, pady=5)
+
+    popup_width = 300
+    popup_height = 100
+
+    # get the screen witdth and height
+    screen_width = ask.winfo_screenwidth()
+    screen_height = ask.winfo_screenheight()
+
+    # calculate the x and y coordinates to center the window
+    x_coor = (screen_width // 2) - (popup_width // 2)
+    y_coor = (screen_height // 2) - (popup_height // 2)
+
+    # set the geometry of the window to center the texts
+    ask.geometry("{}x{}+{}+{}".format( popup_width, popup_height, x_coor, y_coor))
 
     # ===== start popup window =====
     ask.mainloop()
