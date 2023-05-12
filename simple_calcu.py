@@ -4,11 +4,14 @@
 from tkinter import *
 
 # Define operation buttons
-operation = ""
-def func_op(number):
-    global operation
-    operation = operation + str(number)
-    operations.set(operation)
+def addition():
+    try:
+        first_num = int(first_num_box.get())
+        sec_num = int(sec_num_box.get())
+    except ValueError:
+        output_disp.config(text="Error: Invalid input")
+        return
+    output_disp.config(text=str(first_num) + " + " + str(sec_num) + " = " + str(first_num + sec_num))
 
 # Create the window for choosing an operation
 calcu = Tk()
@@ -58,21 +61,21 @@ operation_input.pack(padx=5, pady=10)
 Label(calcu, text="", bg="light pink").pack(side=LEFT, padx=75)
 
 # create buttons for operations
-add_button = Button(calcu, text="+", font=("helvetica", 20, "bold"), command=lambda: func_op("+"))
+add_button = Button(calcu, text="+", font=("helvetica", 20, "bold"), command=addition)
 add_button.pack(side=LEFT, padx=5, pady=20, anchor='n')
 
-sub_button = Button(calcu, text="-", font=("helvetica", 20, "bold"), command=lambda: func_op("-"))
+sub_button = Button(calcu, text="-", font=("helvetica", 20, "bold"))
 sub_button.pack(side=LEFT, padx=5, pady=20, anchor='n')
 
-mul_button = Button(calcu, text="*", font=("helvetica", 20, "bold"), command=lambda: func_op("*"))
+mul_button = Button(calcu, text="*", font=("helvetica", 20, "bold"))
 mul_button.pack(side=LEFT, padx=5, pady=20, anchor='n')
 
-div_button = Button(calcu, text="/", font=("helvetica", 20, "bold"), command=lambda: func_op("/"))
+div_button = Button(calcu, text="/", font=("helvetica", 20, "bold"))
 div_button.pack(side=LEFT, padx=5, pady=20, anchor='n')
 
-# display the input
-operation_disp = Label(calcu, fg="white", bg="light pink", font=("helvetica", 12))
-operation_disp.pack(padx=5, pady=10)
+# Display the output
+output_disp = Label(calcu, text="", fg="white", bg="light pink", font=("helvetica", 25, "bold"), width=25)
+output_disp.place(x=5, y=360)
 
 # Create a popup window for another calculation
 
