@@ -3,6 +3,15 @@
 # Import tkinter GUI
 from tkinter import *
 
+# Disable all entry buttons
+def disable():
+    add_button.config(state=DISABLED)
+    sub_button.config(state=DISABLED)
+    mul_button.config(state=DISABLED)
+    div_button.config(state=DISABLED)
+    first_num_box.config(state=DISABLED)
+    sec_num_box.config(state=DISABLED)
+
 # Define operation buttons
 def addition():
     try:
@@ -10,8 +19,10 @@ def addition():
         sec_num = int(sec_num_box.get())
     except ValueError:
         output_disp.config(text="Error: Invalid input")
+        disable()
         return
     output_disp.config(text=str(first_num) + " + " + str(sec_num) + " = " + str(first_num + sec_num))
+    disable()
 
 def subtraction():
     try:
@@ -19,8 +30,10 @@ def subtraction():
         sec_num = int(sec_num_box.get())
     except ValueError:
         output_disp.config(text="Error: Invalid input")
+        disable()
         return
     output_disp.config(text=str(first_num) + " - " + str(sec_num) + " = " + str(first_num - sec_num))
+    disable()
 
 def multiplication():
     try:
@@ -28,21 +41,27 @@ def multiplication():
         sec_num = int(sec_num_box.get())
     except ValueError:
         output_disp.config(text="Error: Invalid input")
+        disable()
         return
     output_disp.config(text=str(first_num) + " * " + str(sec_num) + " = " + str(first_num * sec_num))
+    disable()
 
 def division():
     try:
         first_num = int(first_num_box.get())
         sec_num = int(sec_num_box.get())
         output_disp.config(text=str(first_num) + " / " + str(sec_num) + " = " + str(first_num / sec_num))
+        disable()
         if sec_num == 0:
             raise ZeroDivisionError()
     except ZeroDivisionError:
         output_disp.config(text="Error: Division by zero")
+        disable()
     except ValueError:
         output_disp.config(text="Error: Invalid input")
+        disable()
         return
+    disable()
 
 # Create the window for choosing an operation
 calcu = Tk()
