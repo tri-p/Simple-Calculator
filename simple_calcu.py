@@ -13,7 +13,7 @@ def func_op(number):
 # Create the window for choosing an operation
 calcu = Tk()
 calcu.title("Simple Calculator - 2023")
-calcu.geometry("470x200")
+calcu.geometry("500x600")
 calcu.config(bg="light pink")
 
 # Display the operation buttons
@@ -45,6 +45,26 @@ operation_disp = Label(calcu, textvariable=operations, fg="white", bg="light pin
 operation_disp.grid(row=2, column=1, sticky=W)
 
 # Ask user to input two numbers
+first_num = IntVar()
+second_num = IntVar()
+
+input_num = Label(calcu, text="Input two numbers:", font=("helvetica", 12, "bold"),
+                 bg="light pink", fg="black", justify=LEFT)
+input_num.grid(row=3, column=0, padx=5, pady=10)
+
+first_num_label = Label(calcu, text="Input first number:", font=("helvetica", 10, "bold"),
+                 bg="light pink", fg="black", justify=LEFT)
+first_num_label.grid(row=4, column=0, pady=5)
+
+sec_num_label = Label(calcu, text="Input second number:", font=("helvetica", 10, "bold"),
+                 bg="light pink", fg="black", justify=LEFT)
+sec_num_label.grid(row=6, column=0, pady=5)
+
+first_num_box = Entry(calcu, textvariable=first_num, fg="black", font=("helvetica", 10, "bold"))
+first_num_box.grid(row=5, column=0, padx=5, pady=5)
+
+sec_num_box = Entry(calcu, textvariable=second_num, fg="black", font=("helvetica", 10, "bold"))
+sec_num_box.grid(row=7, column=0, padx=5, pady=5)
 
 # Evaluate the equation
 
