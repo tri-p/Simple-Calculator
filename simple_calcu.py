@@ -149,10 +149,16 @@ def ask():
     ask_label.pack(padx=10, pady=10)
     
     # create a frame to hold the buttons
+    button_frame = Frame(ask, bg="light pink")
+    button_frame.pack(padx=10, pady=10)
 
     # create a "Yes" button that returns True
+    yes_button = Button(button_frame, text="Yes", font=("helvetica", 12, "bold"))
+    yes_button.pack(padx=5, pady=5)
 
     # create a "No" button that returns False
+    no_button = Button(button_frame, text="No", font=("helvetica", 12, "bold"))
+    no_button.pack(padx=5, pady=5)
 
     # ===== start popup window =====
     ask.mainloop()
