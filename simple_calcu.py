@@ -31,6 +31,19 @@ def multiplication():
         return
     output_disp.config(text=str(first_num) + " * " + str(sec_num) + " = " + str(first_num * sec_num))
 
+def division():
+    try:
+        first_num = int(first_num_box.get())
+        sec_num = int(sec_num_box.get())
+        output_disp.config(text=str(first_num) + " / " + str(sec_num) + " = " + str(first_num / sec_num))
+        if sec_num == 0:
+            raise ZeroDivisionError()
+    except ZeroDivisionError:
+        output_disp.config(text="Error: Division by zero")
+    except ValueError:
+        output_disp.config(text="Error: Invalid input")
+        return
+
 # Create the window for choosing an operation
 calcu = Tk()
 calcu.title("Simple Calculator - 2023")
@@ -88,7 +101,7 @@ sub_button.pack(side=LEFT, padx=5, pady=20, anchor='n')
 mul_button = Button(calcu, text="*", font=("helvetica", 20, "bold"), command=multiplication)
 mul_button.pack(side=LEFT, padx=5, pady=20, anchor='n')
 
-div_button = Button(calcu, text="/", font=("helvetica", 20, "bold"))
+div_button = Button(calcu, text="/", font=("helvetica", 20, "bold"), command=division)
 div_button.pack(side=LEFT, padx=5, pady=20, anchor='n')
 
 # Display the output
