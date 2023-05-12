@@ -2,6 +2,7 @@
 
 # Import tkinter GUI
 from tkinter import *
+from tkinter import messagebox
 
 # Disable all entry buttons
 def disable():
@@ -11,6 +12,22 @@ def disable():
     div_button.config(state=DISABLED)
     first_num_box.config(state=DISABLED)
     sec_num_box.config(state=DISABLED)
+
+# Undisable if the user wants to try the calculator again
+def undisable():
+    add_button.config(state=NORMAL)
+    sub_button.config(state=NORMAL)
+    mul_button.config(state=NORMAL)
+    div_button.config(state=NORMAL)
+    first_num_box.config(state=NORMAL)
+    sec_num_box.config(state=NORMAL)
+
+# Functioon to clear if the user wants to try the calculator agai
+def clear():
+    first_num_box.delete(0, END)
+    sec_num_box.delete(0, END)
+    output_disp.config(text="")
+    first_num_box.focus()
 
 # Define operation buttons
 def addition():
@@ -153,18 +170,17 @@ def ask():
     button_frame.pack(padx=10, pady=10)
 
     # create a "Yes" button that returns True
-    yes_button = Button(button_frame, text="Yes", font=("helvetica", 12, "bold"))
+    yes_button = Button(button_frame, text="Yes", font=("helvetica", 12, "bold"), 
+                        command=lambda: [undisable(), clear(), ask.destroy()])
     yes_button.pack(padx=5, pady=5)
 
     # create a "No" button that returns False
-    no_button = Button(button_frame, text="No", font=("helvetica", 12, "bold"))
+    no_button = Button(button_frame, text="No", font=("helvetica", 12, "bold"),
+                       command=lambda: [messagebox.showinfo("Thank you", "Thank you!"), ask.destroy(), quit()])
     no_button.pack(padx=5, pady=5)
 
     # ===== start popup window =====
     ask.mainloop()
-
-
-# Create a popup window to exit the app
 
 # ===== start =====
 calcu.mainloop()
